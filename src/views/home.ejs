@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management System</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 8px 12px;
+            border: 1px solid #ddd;
+            text-align: left;
+        }
+        th {
+            background-color: #f2f2f2;
+        }
+        .btn {
+            padding: 6px 12px;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        .btn-update {
+            background-color: #007bff;
+        }
+        .btn-delete {
+            background-color: #dc3545;
+        }
+        .btn-add {
+            margin-bottom: 12px;
+            background-color: #28a745;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Management System</h1>
+    <a href="/add"> <button class="btn btn-add">Add Student</button></a>
+   
+    <table>
+        <thead>
+            <tr>
+                <th>Student ID</th>
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email Address</th>
+                <th>Course</th>
+                <th>Operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <% students.forEach(item => {%>
+            <tr>
+               
+                    
+                <td><%=item.studentId  %></td>
+                <td><%= item.firstName  %></td>
+                <td><%= item.lastName  %></td>
+                <td><%= item.email  %></td>
+                <td><%= item.course  %></td>
+         
+                <td>
+                    <a href="/edit?id=<%=item.id %>">
+                    <button class="btn btn-update">Update</button></a>
+                    <a href="/delete?id=<%=item.id %>">
+                    <button id="delete" class="btn btn-delete">Delete</button></a>
+                    <input type="hidden"  id="delete" value="<%=item.id  %>">
+                </td>
+            </tr>
+                   
+            <% }); %>
+        </tbody>
+    </table>
+</body>
+
+
+    
+</script>
+</html>
